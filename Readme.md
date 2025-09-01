@@ -1,72 +1,58 @@
 # 🧭 Deeks Thread Navigator Chrome Extension
 
-**Navigate long conversation threads instantly on ChatGPT, Perplexity, and Gemini with a floating button and prompt menu.**
+**Navigate long conversation threads instantly with a floating button and compact prompt menu.**  
+Currently stable on **ChatGPT** ✅. **Gemini** and **Perplexity** integrations are in progress and shipping soon.  
 
 ![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0-blue)
-![Platforms](https://img.shields.io/badge/Platforms-ChatGPT%20|%20Perplexity%20|%20Gemini-orange)
+![Platforms](https://img.shields.io/badge/Platforms-ChatGPT%20(stable)%20|%20Gemini%20(dev)%20|%20Perplexity%20(dev)-orange)
+
+---
 
 ## ✨ Features
 
-- **🎯 Floating Button:** Always accessible on the right side of supported chat platforms
-- **📋 Prompt Menu:** Displays all user prompts in the current thread with numbered navigation
-- **🚀 Jump Navigation:** Click any listed prompt to scroll directly to it; recently navigated prompts are highlighted
-- **🎨 Multi-Platform Support:** Works seamlessly across three platforms with distinct visual themes:
-  - **ChatGPT** (Green theme) - `chat.openai.com`, `chatgpt.com`
-  - **Perplexity** (Blue theme) - `perplexity.ai`
-  - **Gemini** (Google Blue theme) - `gemini.google.com`
+- **🎯 Floating Button:** Overlays on the chat UI without interfering with typing  
+- **📋 Prompt List:** Shows each user prompt with two quick actions:
+  - Copy the AI’s reply to clipboard  
+  - Jump directly to that reply in the thread  
+- **🚀 Smooth Navigation:** Scrolls smoothly to the reply with a brief highlight so you don’t lose track  
+- **🔧 Cross-Platform Design:**  
+  - **ChatGPT (stable)** – full support for prompt detection, copy-response, and jump-to-response  
+  - **Gemini & Perplexity (in progress)** – UI and features will match once DOM selectors and pairing logic are finalized  
+
+---
 
 ## 🚀 Installation
 
 ### Step 1: Download Files
-Save the following files in a new folder (e.g., `deeks-thread-navigator`):
+Clone this repo or save the following files into a folder (e.g., `deeks-thread-navigator`):
 - `manifest.json`
 - `content.js`
-- `styles.css` (optional, for advanced styling)
+- `styles.css`
 
 ### Step 2: Load Extension
 1. Open Chrome and go to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in top right)
-3. Click **"Load unpacked"**
+2. Enable **Developer Mode**
+3. Click **Load unpacked**
 4. Select your extension folder
-
-## 🎯 Usage
-
-1. **Open** any supported platform (ChatGPT, Perplexity, or Gemini) in Chrome
-2. Look for the **floating clipboard button** 📋 on the right side of your browser window
-3. **Click the button** to view all previous prompts in the current chat/thread
-4. **Navigate instantly** by clicking any prompt entry in the pop-up list
-5. **Visual feedback:** The selected prompt will briefly highlight with a yellow border
-6. **Close** the menu using the '×' button or by clicking outside the modal
-
-## 🔄 Version History
-
-### v1.0 (Current)
-- Initial release
-- Multi-platform support for ChatGPT, Perplexity, and Gemini
-- Floating button with platform-specific themes
-- Prompt navigation and highlighting
-- Responsive modal design
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test across all supported platforms
-5. Submit a pull request
-
-## 📄 License
-
-This project is open source. You may modify and distribute for personal use. Do credit me when sharing.
-
-## 🆘 Support
-
-For issues, feature requests, or questions:
-- Open an issue on GitHub
 
 ---
 
-**Made for better AI conversation navigation by Deekshith Sistu** 
+## 🎯 Usage
 
-*Happy chatting! 🚀*
+1. Open a chat on ChatGPT (or Gemini/Perplexity once supported)  
+2. Click the **floating clipboard button** 📋 on the right edge of the chat UI  
+3. In the navigator panel:  
+   - Click a prompt row → jump to that reply  
+   - Click the clipboard icon → copy AI’s reply  
+   - Click the link icon → jump directly to the reply  
+4. Replies briefly highlight on jump for easier tracking  
+
+---
+
+## 🛠️ Troubleshooting
+
+- **Button missing?** → Reload the tab and ensure Developer Mode + extension are enabled  
+- **Empty list or actions failing?** → Open DevTools Console for logs, reload after chat UI fully renders  
+
+---
