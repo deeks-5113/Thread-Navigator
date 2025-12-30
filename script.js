@@ -28,6 +28,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollElements = document.querySelectorAll('.fade-in, .reveal-on-scroll');
     scrollElements.forEach(el => observer.observe(el));
 
+    // Feature Carousel Logic
+    const carousel = document.querySelector('.feature-carousel');
+    if (carousel) {
+        const navItems = carousel.querySelectorAll('.nav-item');
+        const images = carousel.querySelectorAll('.stage-image');
+        let currentIndex = 0;
+        let interval;
+        const duration = 5000; // 5 seconds per slide
+        let startTime;
+        let animationFrame;
+
+        function setActive(index) {
+            // Update Nav
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.progress-bar').style.width = '0%';
+            });
+            navItems[index].classList.add('active');
+
+            // Update Images
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+
+            currentIndex = index;
+            startProgress(index);
+        }
+
+        function startProgress(index) {
+            cancelAnimationFrame(animationFrame);
+            startTime = performance.now();
+
+            const bar = navItems[index].querySelector('.progress-bar');
+
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                bar.style.width = `${progress * 100}%`;
+
+                if (progress < 1) {
+                    animationFrame = requestAnimationFrame(animate);
+                } else {
+                    nextSlide();
+                }
+            }
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentIndex + 1) % navItems.length;
+            setActive(nextIndex);
+        }
+
+        // Click Interactions
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                setActive(index);
+            });
+        });
+
+        // Pause on Hover
+        carousel.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
+        carousel.addEventListener('mouseleave', () => startProgress(currentIndex));
+
+        // Start
+        setActive(0);
+    }
+
     // Smooth Scroll for Anchor Links (if any)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
