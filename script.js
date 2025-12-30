@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer for Fade In Animations
+    // Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // General Reveal on Scroll
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -10,49 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Only animate once
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Also animate feature cards when they scroll into view
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.5s ease';
-        card.style.transitionDelay = `${index * 0.1}s`;
-        
-        observer.observe(card);
-    });
-
-    // Custom observer for feature cards to add a specific class or style
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    featureCards.forEach(card => cardObserver.observe(card));
-
-
-    // Navbar Scroll Effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
-        } else {
-            navbar.style.background = 'rgba(17, 17, 17, 0.8)';
-            navbar.style.boxShadow = 'none';
-        }
-    });
+    const scrollElements = document.querySelectorAll('.fade-in, .reveal-on-scroll');
+    scrollElements.forEach(el => observer.observe(el));
 
     // Smooth Scroll for Anchor Links (if any)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -66,4 +40,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Magnifying Glass Effect
+    const imgWrapper = document.querySelector('.image-wrapper');
+    const img = document.querySelector('.explain-img');
+
+    if (imgWrapper && img) {
+        const lens = document.createElement('div');
+        lens.classList.add('magnifier-lens');
+        imgWrapper.appendChild(lens);
+
+        const zoomRatio = 1.5;
+
+        imgWrapper.addEventListener('mousemove', (e) => {
+            const rect = imgWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const lensW = lens.offsetWidth;
+            const lensH = lens.offsetHeight;
+
+            lens.style.left = `${x - lensW / 2}px`;
+            lens.style.top = `${y - lensH / 2}px`;
+
+            lens.style.backgroundImage = `url('${img.src}')`;
+            lens.style.backgroundSize = `${img.width * zoomRatio}px ${img.height * zoomRatio}px`;
+
+            const bgX = (x * zoomRatio) - (lensW / 2);
+            const bgY = (y * zoomRatio) - (lensH / 2);
+
+            lens.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+        });
+    }
 });
