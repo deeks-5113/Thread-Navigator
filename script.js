@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lens.classList.add('magnifier-lens');
         imgWrapper.appendChild(lens);
 
-        const zoomRatio = 1.5;
+        const zoomRatio = 1.75;
 
         imgWrapper.addEventListener('mousemove', (e) => {
             const rect = imgWrapper.getBoundingClientRect();
