@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thread Navigator - Master Your AI Conversations</title>
-    <link rel="icon" href="icon128.png" type="image/x-icon">
+    <link rel="icon" href="Icon.png" type="image/x-icon">
     <meta name="description"
         content="The ultimate Table of Contents and Chat Manager for ChatGPT, Gemini, Perplexity, and DeepSeek.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,8 @@
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <i class="fa-solid fa-compass"></i> Thread Navigator
+                <img src="Icon.png" alt="Thread Navigator Logo" style="width: 50px; height: 50px; object-fit: contain;">
+                Thread Navigator
             </div>
             <a href="https://chromewebstore.google.com/search/Thread%20Navigator%20by%20Deekshith?hl=en-GB&utm_source=ext_sidebar"
                 class="btn btn-primary glow-effect" target="_blank">Add to Chrome - It’s Free</a>
@@ -32,6 +33,20 @@
     </nav>
 
     <header class="hero">
+        <!-- Floating Speech Bubbles -->
+        <div class="hero-bubbles">
+            <a href="#power-section" class="speech-bubble bubble-1"><i class="fa-solid fa-shield-halved"></i> Privacy First (No Server)
+            </a>
+            <a href="#power-section" class="speech-bubble bubble-2"><i class="fa-solid fa-laptop-code"></i> Works<br> Locally</a>
+            <a href="#spotlight-section" class="speech-bubble bubble-3"><i class="fa-solid fa-rocket"></i> Context teleportation</a>
+            <a href="#library-section" class="speech-bubble bubble-4 tail-right"><i class="fa-solid fa-share-nodes"></i> Share your<br>prompt
+                libraries</a>
+            <a href="#power-section" class="speech-bubble bubble-5 tail-right"><i class="fa-solid fa-file-pdf"></i> Export Threads
+                as<br>formatted PDFs</a>
+            <a href="#vault-section" class="speech-bubble bubble-6 tail-right"><i class="fa-solid fa-folder-open"></i> Save threads
+                to<br>customized workspaces</a>
+        </div>
+
         <div class="container hero-container">
             <div class="hero-content">
                 <h1 class="fade-in">Master Your AI Conversations 🚀</h1>
@@ -130,23 +145,23 @@
                 <!-- Stage (Right) -->
                 <div class="carousel-stage">
                     <div class="stage-image active" data-index="0">
-                        <img src="2v1.3.png" alt="HUD & Starred Prompts">
+                        <img src="v1.4_1.png" alt="HUD & Starred Prompts">
                     </div>
                     <div class="stage-image" data-index="1">
-                        <img src="4v1.3.png" alt="Context Teleportation">
+                        <img src="v1.4_2.png" alt="Context Teleportation">
                     </div>
                     <div class="stage-image" data-index="2">
-                        <img src="3v1.3.png" alt="Prompt Library - Bento Grid">
+                        <img src="v1.4_3.png" alt="Prompt Library - Bento Grid">
                     </div>
                     <div class="stage-image" data-index="3">
-                        <img src="5v1.4.png" alt="Vault Manager">
+                        <img src="v1.4_4.png" alt="Vault Manager">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="spotlight-section">
+    <section id="spotlight-section" class="spotlight-section">
         <div class="container">
             <div class="spotlight-content reveal-on-scroll">
                 <div class="spotlight-text">
@@ -191,7 +206,7 @@
         </div>
     </section>
 
-    <section class="library-section">
+    <section id="library-section" class="library-section">
         <div class="container">
             <div class="library-content reveal-on-scroll">
                 <div class="library-visual">
@@ -263,7 +278,7 @@
         </div>
     </section>
 
-    <section class="vault-section">
+    <section id="vault-section" class="vault-section">
         <div class="container">
             <div class="section-title text-center">
                 <h2>The Vault & Workspaces 🗄️ <span class="badge"
@@ -312,7 +327,7 @@
         </div>
     </section>
 
-    <section class="power-section">
+    <section id="power-section" class="power-section">
         <div class="container">
             <div class="section-title text-center">
                 <h2>Even More Power</h2>
@@ -451,7 +466,11 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
-                <h4>Thread Navigator</h4>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <img src="Icon.png" alt="Thread Navigator Logo"
+                        style="width: 28px; height: 28px; object-fit: contain;">
+                    <h4 style="margin-bottom: 0;">Thread Navigator</h4>
+                </div>
                 <p>Master your AI workflow.</p>
             </div>
             <div class="footer-links">

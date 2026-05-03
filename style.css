@@ -31,6 +31,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
@@ -409,6 +413,138 @@ p {
     color: black;
     border-left: 3px solid var(--primary);
 }
+
+/* Hero Speech Bubbles */
+.hero-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.speech-bubble {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 2px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: floatBubble 6s ease-in-out infinite;
+    pointer-events: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.speech-bubble:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+    border-color: var(--primary);
+}
+
+/* The Speech Bubble Tail */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 30px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #e5e7eb transparent transparent transparent;
+    display: block;
+    width: 0;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 32px;
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+.speech-bubble:hover::after {
+    border-color: var(--primary) transparent transparent transparent;
+}
+
+/* Specific tail positions if needed */
+.speech-bubble.tail-right::after {
+    left: auto;
+    right: 30px;
+}
+
+.speech-bubble.tail-right::before {
+    left: auto;
+    right: 32px;
+}
+
+.speech-bubble i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.bubble-1 {
+    top: 18%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.bubble-2 {
+    top: 31%;
+    left: 43%;
+    animation-delay: 1s;
+}
+
+.bubble-3 {
+    bottom: 4%;
+    left: 2%;
+    animation-delay: 2s;
+}
+
+.bubble-4 {
+    top: 16%;
+    right: 2%;
+    animation-delay: 3s;
+}
+
+.bubble-5 {
+    bottom: 5%;
+    right: 48%;
+    animation-delay: 4s;
+}
+
+.bubble-6 {
+    bottom: 2%;
+    right: 5%;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatBubble {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
 
 /* Problem Section */
 .problem-section {
